@@ -1,111 +1,944 @@
-*{
+/*=========================================================
+=            DIGITAL INVITATION PRO v1.0                  =
+=            Autor: Eduardo Pérez Galván                  =
+=========================================================*/
+
+/*=========================================================
+=            VARIABLES GLOBALES                           =
+=========================================================*/
+
+:root{
+
+    /* Colores */
+
+    --color-primary:#D4AF37;
+    --color-secondary:#F5F5F5;
+
+    --bg:#080808;
+    --bg-soft:#101010;
+    --bg-card:rgba(255,255,255,.08);
+
+    --text:#ffffff;
+    --text-soft:#bfbfbf;
+
+    --success:#25D366;
+    --danger:#ff4b4b;
+
+    --border:rgba(255,255,255,.12);
+
+    /* Glass */
+
+    --glass:rgba(255,255,255,.08);
+    --glass-border:rgba(255,255,255,.15);
+    --blur:18px;
+
+    /* Sombras */
+
+    --shadow:
+
+        0 15px 35px rgba(0,0,0,.45);
+
+    /* Bordes */
+
+    --radius:24px;
+
+    /* Espaciado */
+
+    --section-padding:110px;
+
+    /* Transiciones */
+
+    --transition:.35s ease;
+
+    /* Contenedor */
+
+    --container:1200px;
+
+}
+
+
+/*=========================================================
+=            RESET                                        =
+=========================================================*/
+
+*,
+*::before,
+*::after{
+
     margin:0;
     padding:0;
+
     box-sizing:border-box;
+
 }
 
 html{
+
     scroll-behavior:smooth;
+
+    font-size:16px;
+
 }
 
 body{
 
+    background:var(--bg);
+
+    color:var(--text);
+
     font-family:'Poppins',sans-serif;
-    background:#0f172a;
-    color:white;
+
+    overflow-x:hidden;
+
+    line-height:1.6;
+
+    text-rendering:optimizeLegibility;
+
+    -webkit-font-smoothing:antialiased;
+
+}
+
+img{
+
+    display:block;
+
+    width:100%;
+
+}
+
+video{
+
+    display:block;
+
+}
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+button{
+
+    border:none;
+
+    outline:none;
+
+    cursor:pointer;
+
+    font-family:inherit;
+
+}
+
+ul{
+
+    list-style:none;
 
 }
 
 section{
 
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    padding:50px;
+    width:100%;
+
+    padding:var(--section-padding) 25px;
+
+    position:relative;
 
 }
 
-#welcome{
+.container{
 
-    background:#111827;
+    width:min(100%,var(--container));
+
+    margin:auto;
+
+}
+
+
+/*=========================================================
+=            TIPOGRAFÍA                                   =
+=========================================================*/
+
+h1{
+
+    font-size:clamp(2.8rem,7vw,5.8rem);
+
+    font-weight:700;
+
+    line-height:1.1;
+
+}
+
+h2{
+
+    font-size:clamp(2rem,5vw,3.2rem);
+
+    margin-bottom:30px;
+
+}
+
+h3{
+
+    font-size:1.35rem;
+
+    margin-bottom:10px;
+
+}
+
+h4{
+
+    font-size:1rem;
+
+    color:var(--color-primary);
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+}
+
+p{
+
+    color:var(--text-soft);
+
+    font-size:1rem;
+
+}
+
+
+/*=========================================================
+=            SCROLLBAR                                    =
+=========================================================*/
+
+::-webkit-scrollbar{
+
+    width:12px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#090909;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:linear-gradient(
+
+        to bottom,
+
+        var(--color-primary),
+
+        #8f6f19
+
+    );
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#d8bf62;
+
+}
+
+
+/* Firefox */
+
+*{
+
+    scrollbar-width:thin;
+
+    scrollbar-color:var(--color-primary) #090909;
+
+}
+
+
+/*=========================================================
+=            PRELOADER                                    =
+=========================================================*/
+
+#preloader{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:99999;
+
+    background:#050505;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    transition:opacity .8s ease,
+               visibility .8s ease;
+
+}
+
+#preloader.hidden{
+
+    opacity:0;
+
+    visibility:hidden;
+
+}
+
+
+/* Loader */
+
+.loader{
+
+    width:80px;
+
+    height:80px;
+
+    border-radius:50%;
+
+    border:5px solid rgba(255,255,255,.15);
+
+    border-top-color:var(--color-primary);
+
+    animation:spin 1s linear infinite;
+
+}
+
+
+/* Texto opcional */
+
+#preloader::after{
+
+    content:"Cargando...";
+
+    position:absolute;
+
+    bottom:22%;
+
+    color:#cfcfcf;
+
+    font-size:.95rem;
+
+    letter-spacing:2px;
+
+}
+
+
+/*=========================================================
+=            UTILIDADES                                   =
+=========================================================*/
+
+.text-center{
+
     text-align:center;
 
 }
 
-#welcome button{
+.hidden{
 
-    margin-top:30px;
-    padding:15px 35px;
-    border:none;
-    border-radius:50px;
-    cursor:pointer;
-    font-size:18px;
+    display:none;
 
 }
 
-#hero{
+.opacity-0{
 
-    position:relative;
+    opacity:0;
+
+}
+
+.blur{
+
+    backdrop-filter:blur(var(--blur));
+
+}
+
+.shadow{
+
+    box-shadow:var(--shadow);
+
+}
+
+.radius{
+
+    border-radius:var(--radius);
+
+}
+
+
+/*=========================================================
+=            ANIMACIONES BASE                             =
+=========================================================*/
+
+@keyframes spin{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0px);
+
+    }
+
+    50%{
+
+        transform:translateY(-8px);
+
+    }
+
+    100%{
+
+        transform:translateY(0px);
+
+    }
+
+}
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.05);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+/*=========================================================
+=            SELECCIÓN DE TEXTO                           =
+=========================================================*/
+
+::selection{
+
+    background:var(--color-primary);
+
+    color:#000;
+
+}
+
+
+/*=========================================================
+=            FONDO GENERAL                                =
+=========================================================*/
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+    radial-gradient(circle at top left,
+    rgba(212,175,55,.08),
+    transparent 40%),
+
+    radial-gradient(circle at bottom right,
+    rgba(255,255,255,.03),
+    transparent 35%);
+
+    pointer-events:none;
+
+    z-index:-1;
+
+}
+
+
+/*=========================================================
+=            WELCOME SCREEN                               =
+=========================================================*/
+
+#welcome{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:9998;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
     overflow:hidden;
 
+    background:#000;
+
+    transition:opacity .8s ease,
+               visibility .8s ease;
+
 }
 
-#hero video{
+#welcome.hidden{
+
+    opacity:0;
+
+    visibility:hidden;
+
+}
+
+/* Fondo con video */
+
+#welcome video{
 
     position:absolute;
+
+    inset:0;
+
     width:100%;
+
     height:100%;
+
     object-fit:cover;
+
+    z-index:-3;
+
+}
+
+/* Overlay oscuro */
+
+.welcome-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+
+        rgba(0,0,0,.65),
+
+        rgba(0,0,0,.78)
+
+    );
+
     z-index:-2;
 
 }
 
-.hero-content{
+/* Contenido */
+
+.welcome-content{
+
+    width:min(92%,650px);
 
     text-align:center;
 
+    animation:fadeIn 1.5s;
+
 }
 
-.timer{
+.welcome-content h3{
+
+    color:var(--color-primary);
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    margin-bottom:20px;
+
+    font-weight:500;
+
+}
+
+.welcome-content h1{
+
+    margin-bottom:18px;
+
+}
+
+.welcome-content p{
+
+    max-width:520px;
+
+    margin:auto;
+
+    margin-bottom:40px;
+
+    color:#d6d6d6;
+
+}
+
+/*=========================================================
+=            BOTÓN PRINCIPAL                              =
+=========================================================*/
+
+#btnOpen{
+
+    padding:18px 42px;
+
+    border-radius:999px;
+
+    font-size:1rem;
+
+    color:#fff;
+
+    border:1px solid rgba(255,255,255,.18);
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    transition:all .35s ease;
+
+    box-shadow:
+
+        0 10px 30px rgba(0,0,0,.35);
+
+}
+
+#btnOpen:hover{
+
+    transform:translateY(-4px);
+
+    background:rgba(255,255,255,.14);
+
+    box-shadow:
+
+        0 20px 40px rgba(0,0,0,.45);
+
+}
+
+#btnOpen:active{
+
+    transform:scale(.97);
+
+}
+
+/*=========================================================
+=            HERO FULLSCREEN                              =
+=========================================================*/
+
+#hero{
+
+    position:relative;
+
+    width:100%;
+
+    height:100vh;
+
+    overflow:hidden;
 
     display:flex;
-    gap:30px;
+
+    justify-content:center;
+
+    align-items:center;
 
 }
 
-.timer div{
+/* Video */
+
+#hero video{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    z-index:-3;
+
+}
+
+/* Oscurecer video */
+
+.hero-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+
+        rgba(0,0,0,.45),
+
+        rgba(0,0,0,.70)
+
+    );
+
+    z-index:-2;
+
+}
+
+/* Luces */
+
+.hero-overlay::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    radial-gradient(
+
+        circle at top,
+
+        rgba(212,175,55,.15),
+
+        transparent 55%
+
+    );
+
+}
+
+/*=========================================================
+=            CONTENIDO HERO                               =
+=========================================================*/
+
+.hero-content{
+
+    width:min(90%,900px);
 
     text-align:center;
 
-}
+    z-index:2;
 
-.timer span{
-
-    font-size:3rem;
-    font-weight:bold;
+    animation:fadeIn 2s;
 
 }
 
-.card{
+.hero-content h4{
 
-    width:280px;
-    padding:30px;
-    margin:20px;
-    border-radius:20px;
-    background:#1e293b;
-    text-align:center;
+    margin-bottom:20px;
 
 }
 
-#confirmacion a{
+.hero-content h1{
 
-    margin-top:30px;
-    padding:15px 40px;
-    background:#25D366;
-    color:white;
-    border-radius:50px;
-    text-decoration:none;
+    margin-bottom:15px;
+
+    text-shadow:
+
+        0 10px 25px rgba(0,0,0,.55);
+
+}
+
+.hero-content p{
+
+    color:#ececec;
+
+    font-size:1.15rem;
+
+    margin-bottom:50px;
+
+}
+
+/*=========================================================
+=            SCROLL INDICATOR                             =
+=========================================================*/
+
+.scrollDown{
+
+    width:60px;
+
+    height:60px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border:1px solid rgba(255,255,255,.2);
+
+    backdrop-filter:blur(12px);
+
+    background:rgba(255,255,255,.08);
+
+    animation:float 2s infinite;
+
+    transition:.3s;
+
+}
+
+.scrollDown:hover{
+
+    transform:scale(1.08);
+
+    background:rgba(255,255,255,.15);
+
+}
+
+.scrollDown i{
+
+    font-size:1.4rem;
+
+}
+
+/*=========================================================
+=            EFECTO PARALLAX                              =
+=========================================================*/
+
+#hero video{
+
+    transform:scale(1.08);
+
+    transition:transform 6s linear;
+
+}
+
+body.loaded #hero video{
+
+    transform:scale(1);
+
+}
+
+/*=========================================================
+=            HERO FADE                                    =
+=========================================================*/
+
+#hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    right:0;
+
+    bottom:0;
+
+    height:180px;
+
+    background:
+
+    linear-gradient(
+
+        transparent,
+
+        var(--bg)
+
+    );
+
+}
+
+/*=========================================================
+=            MOBILE FIRST                                 =
+=========================================================*/
+
+@media(max-width:768px){
+
+    .welcome-content h1{
+
+        font-size:2.8rem;
+
+    }
+
+    .hero-content h1{
+
+        font-size:3rem;
+
+    }
+
+    .hero-content p{
+
+        font-size:1rem;
+
+    }
+
+    #btnOpen{
+
+        width:100%;
+
+        max-width:300px;
+
+    }
+
+}
+
+/*=========================================================
+=            TABLET                                       =
+=========================================================*/
+
+@media(min-width:769px){
+
+    .welcome-content h1{
+
+        font-size:4.5rem;
+
+    }
+
+}
+
+/*=========================================================
+=            DESKTOP XL                                   =
+=========================================================*/
+
+@media(min-width:1400px){
+
+    .hero-content{
+
+        max-width:1000px;
+
+    }
 
 }
