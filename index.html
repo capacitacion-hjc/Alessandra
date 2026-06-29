@@ -8,81 +8,121 @@
 
     <title>Invitación Digital</title>
 
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Invitación Digital Premium">
+    <meta name="theme-color" content="#0b0b0b">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
-    <!-- AOS CSS -->
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- AOS -->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-    <!-- Pantalla de bienvenida -->
+    <!-- ========================= -->
+    <!-- PRELOADER -->
+    <!-- ========================= -->
+
+    <div id="preloader">
+
+        <div class="loader"></div>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- PANTALLA BIENVENIDA -->
+    <!-- ========================= -->
 
     <section id="welcome">
 
-        <div class="overlay">
+        <div class="welcome-overlay">
 
-            <h3>Estás invitado a la fiesta de<br></h3>
+            <h3 id="welcomeText">
 
-            <h1 id="nombreEvento">
-                Nombre del Evento
+                Estás Invitado
+
+            </h3>
+
+            <h1 id="eventName">
+
+                Invitación
+
             </h1>
 
-            <button id="btnEntrar">
+            <button id="btnOpen">
+
                 Abrir Invitación
+
             </button>
 
         </div>
 
     </section>
 
-    <!-- Hero -->
+    <!-- ========================= -->
+    <!-- HERO -->
+    <!-- ========================= -->
 
-    <section id="hero" data-aos="fade-up">
+    <header id="hero">
 
-        <video autoplay muted loop playsinline>
+        <video id="heroVideo" autoplay muted loop playsinline>
 
-            <source src="assets/video/portada.mp4" type="video/mp4">
+            <source src="" type="video/mp4">
 
         </video>
 
+        <div class="hero-overlay"></div>
+
         <div class="hero-content">
 
-            <h1 id="titulo">
-                Cumpleaños
-            </h1>
+            <h4 id="heroSubtitle"></h4>
 
-            <h2 id="nombre">
-                Eduardo
-            </h2>
+            <h1 id="heroTitle"></h1>
 
-            <p id="fecha">
-                18 Julio 2026
-            </p>
+            <p id="heroDate"></p>
+
+            <a href="#countdown" class="scrollDown">
+
+                <i class="fa-solid fa-angle-down"></i>
+
+            </a>
 
         </div>
 
-    </section>
+    </header>
 
-    <!-- Cuenta regresiva -->
+    <!-- ========================= -->
+    <!-- CUENTA REGRESIVA -->
+    <!-- ========================= -->
 
-    <section id="countdown">
+    <section id="countdown" data-aos="fade-up">
 
-        <h2>Faltan</h2>
+        <h2>
 
-        <div class="timer">
+            Faltan...
+
+        </h2>
+
+        <div class="countdown-grid">
 
             <div>
 
-                <span id="dias">00</span>
+                <span id="days">00</span>
 
                 <small>Días</small>
 
@@ -90,7 +130,7 @@
 
             <div>
 
-                <span id="horas">00</span>
+                <span id="hours">00</span>
 
                 <small>Horas</small>
 
@@ -98,7 +138,7 @@
 
             <div>
 
-                <span id="minutos">00</span>
+                <span id="minutes">00</span>
 
                 <small>Minutos</small>
 
@@ -106,7 +146,7 @@
 
             <div>
 
-                <span id="segundos">00</span>
+                <span id="seconds">00</span>
 
                 <small>Segundos</small>
 
@@ -116,73 +156,157 @@
 
     </section>
 
-    <!-- Información -->
+    <!-- ========================= -->
+    <!-- INFORMACIÓN -->
+    <!-- ========================= -->
 
-    <section id="info">
+    <section id="information" data-aos="fade-up">
 
-        <div class="card">
+        <div class="glass-card">
 
             <i class="fa-solid fa-calendar-days"></i>
 
             <h3>Fecha</h3>
 
-            <p id="infoFecha"></p>
+            <p id="infoDate"></p>
 
         </div>
 
-        <div class="card">
+        <div class="glass-card">
 
             <i class="fa-solid fa-clock"></i>
 
             <h3>Hora</h3>
 
-            <p id="infoHora"></p>
+            <p id="infoHour"></p>
 
         </div>
 
-        <div class="card">
+        <div class="glass-card">
 
             <i class="fa-solid fa-location-dot"></i>
 
             <h3>Lugar</h3>
 
-            <p id="infoLugar"></p>
+            <p id="infoPlace"></p>
 
         </div>
 
     </section>
 
-    <!-- Confirmación -->
+    <!-- ========================= -->
+    <!-- GALERÍA -->
+    <!-- ========================= -->
 
-    <section id="confirmacion">
+    <section id="gallery" data-aos="zoom-in">
 
-        <h2>Confirma tu asistencia</h2>
+        <h2>
 
-        <a id="whatsapp" target="_blank">
+            Galería
+
+        </h2>
+
+        <div class="swiper mySwiper">
+
+            <div class="swiper-wrapper">
+
+                <!-- script.js -->
+
+            </div>
+
+            <div class="swiper-pagination"></div>
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- MAPA -->
+    <!-- ========================= -->
+
+    <section id="map" data-aos="fade-up">
+
+        <h2>
+
+            Ubicación
+
+        </h2>
+
+        <iframe id="googleMap" loading="lazy" allowfullscreen>
+
+        </iframe>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- MÚSICA -->
+    <!-- ========================= -->
+
+    <button id="musicButton">
+
+        <i class="fa-solid fa-music"></i>
+
+    </button>
+
+    <audio id="music" loop>
+
+    </audio>
+
+    <!-- ========================= -->
+    <!-- WHATSAPP -->
+    <!-- ========================= -->
+
+    <section id="confirmation" data-aos="fade-up">
+
+        <h2>
+
+            ¿Nos acompañas?
+
+        </h2>
+
+        <a id="btnWhatsapp" target="_blank">
 
             <i class="fa-brands fa-whatsapp"></i>
 
-            Confirmar
+            Confirmar Asistencia
 
         </a>
 
     </section>
 
-    <!-- AOS JS -->
-        <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <!-- ========================= -->
+    <!-- FOOTER -->
+    <!-- ========================= -->
 
-        <script>
-            AOS.init({
-                duration: 1000,      // Duración de la animación (ms)
-                easing: 'ease-in-out',
-                once: true,          // Solo anima la primera vez
-                offset: 100          // Empieza la animación 100px antes de entrar
-            });
-        </script>
+    <footer>
 
-        <script src="script.js"></script>
+        <p id="footerText">
 
+        </p>
 
+    </footer>
+
+    <!-- ========================= -->
+    <!-- LIBRERÍAS -->
+    <!-- ========================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <!-- ========================= -->
+    <!-- CONFIG -->
+    <!-- ========================= -->
+
+    <script src="config.js"></script>
+
+    <!-- ========================= -->
+    <!-- SCRIPT -->
+    <!-- ========================= -->
+
+    <script src="script.js"></script>
 
 </body>
 
