@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Invitación Digital</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- Pantalla de bienvenida -->
+
+    <section id="welcome">
+
+        <div class="overlay">
+
+            <h3>Estás invitado</h3>
+
+            <h1 id="nombreEvento">
+                Nombre del Evento
+            </h1>
+
+            <button id="btnEntrar">
+                Abrir Invitación
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- Hero -->
+
+    <section id="hero">
+
+        <video autoplay muted loop playsinline>
+
+            <source src="assets/video/portada.mp4" type="video/mp4">
+
+        </video>
+
+        <div class="hero-content">
+
+            <h1 id="titulo">
+                Cumpleaños
+            </h1>
+
+            <h2 id="nombre">
+                Eduardo
+            </h2>
+
+            <p id="fecha">
+                18 Julio 2026
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- Cuenta regresiva -->
+
+    <section id="countdown">
+
+        <h2>Faltan</h2>
+
+        <div class="timer">
+
+            <div>
+
+                <span id="dias">00</span>
+
+                <small>Días</small>
+
+            </div>
+
+            <div>
+
+                <span id="horas">00</span>
+
+                <small>Horas</small>
+
+            </div>
+
+            <div>
+
+                <span id="minutos">00</span>
+
+                <small>Minutos</small>
+
+            </div>
+
+            <div>
+
+                <span id="segundos">00</span>
+
+                <small>Segundos</small>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Información -->
+
+    <section id="info">
+
+        <div class="card">
+
+            <i class="fa-solid fa-calendar-days"></i>
+
+            <h3>Fecha</h3>
+
+            <p id="infoFecha"></p>
+
+        </div>
+
+        <div class="card">
+
+            <i class="fa-solid fa-clock"></i>
+
+            <h3>Hora</h3>
+
+            <p id="infoHora"></p>
+
+        </div>
+
+        <div class="card">
+
+            <i class="fa-solid fa-location-dot"></i>
+
+            <h3>Lugar</h3>
+
+            <p id="infoLugar"></p>
+
+        </div>
+
+    </section>
+
+    <!-- Confirmación -->
+
+    <section id="confirmacion">
+
+        <h2>Confirma tu asistencia</h2>
+
+        <a id="whatsapp" target="_blank">
+
+            <i class="fa-brands fa-whatsapp"></i>
+
+            Confirmar
+
+        </a>
+
+    </section>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
